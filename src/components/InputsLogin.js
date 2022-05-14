@@ -1,10 +1,10 @@
-function inputsLogin() {
+function inputsPageLogin() {
   return (
       <div className="sectionInputs">
-        <input className="inputEmail" placeholder="Email"></input>
-        <input className="inputSenha" placeholder="Senha"></input>
+        <input className="inputEmail" placeholder="Email" />
+        <input className="inputSenha" placeholder="Senha" />
       </div>
   );
 }
 
-export default inputsLogin;
+export default inputsPageLogin;
