@@ -1,6 +1,6 @@
 import { useState } from "react";
 // import { Link, useNavigate } from "react-router-dom";
-import { Inputs } from './components/Inputs';
+import  {Inputs}  from "../../components/Inputs"
 //import Button from './components/Buttons';
 
 function PageLogin() {
