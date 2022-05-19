@@ -6,10 +6,7 @@ export function Button(props) {
       <button
         className={style.button}
         id={props.id} type={props.type}
-        onClick={props.onClick}>
-
-        {props.children}
-        
+        onClick={props.onClick}>        
       </button>
     </>
   );
