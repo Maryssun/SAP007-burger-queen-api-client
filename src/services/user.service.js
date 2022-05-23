@@ -10,9 +10,8 @@ export async function createUser (name, email, password, role) {
       body: JSON.stringify({
         name: name,
         email: email,
-        password: password,
+        password: password, 
         role: role,
-        restaurant: " ",
       })
   });
 };
