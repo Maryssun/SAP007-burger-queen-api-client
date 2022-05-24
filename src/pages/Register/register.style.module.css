@@ -1,20 +1,26 @@
 body {
-    background-color: #1a3042;
+  background-color: #1a3042;
 }
 
-.containerLogin {
-	display: flex;
-    width: 100%;
-    max-width: 420px;
-    height: 100vh;
-    margin: 0 auto;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-image: url("./../../assets/images/logo-queen.png");
-    background-repeat: no-repeat;
-    background-position: center;
+.headerRegister{
+  background-image: url("./../../assets/images/burguer-queen.png");  
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: right;
+}
 
+.containerRegister {
+	display: flex;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  background-image: url("./../../assets/images/LogoQueen75.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 /* .containerLogin .item {
