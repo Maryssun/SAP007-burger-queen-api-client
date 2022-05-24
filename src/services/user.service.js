@@ -1,7 +1,7 @@
 import appSettings from "../appSettings";
 
 export async function createUser (name, email, password, role) {
-  return fetch(appSettings, {
+  return fetch(`${appSettings.api.urlBase}/users`, {
     method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -12,6 +12,7 @@ export async function createUser (name, email, password, role) {
         email: email,
         password: password, 
         role: role,
+        restaurant: 'Burguer Queen'
       })
   });
 };

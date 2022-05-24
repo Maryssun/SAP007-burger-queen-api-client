@@ -1,0 +1,8 @@
+label{
+  display: flex;
+}
+.radio{
+  height: 30px;
+  width: 30px;
+  display: block;
+}

@@ -7,9 +7,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* http://meyerweb.com/eric/tools/css/reset/ */
-/* v1.0 | 20080212 */
-
 * {
   box-sizing: border-box;
 }
@@ -66,4 +63,19 @@ text-decoration: line-through;
 table {
 border-collapse: collapse;
 border-spacing: 0;
+}
+
+.root {
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+
+  --light-yellow: #EEECA8;
+  --nude: #D9A066;
+  --rose: #EE836F;
+  --navy: #1A3042;
+  --off-white: #F7F8FC;
+  --black: #000000;
 }
