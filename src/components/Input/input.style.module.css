@@ -3,6 +3,8 @@
   border: solid 1px transparent;
   border-radius: 10px;
   width: 100%;
-  height: 7vh;
-  margin: 3vh 0;
+  height: 40px;
+  margin: 15px 0;
+  padding: 16px;
+  font-size: 1.1em;
 }
