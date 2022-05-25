@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import { setToken } from "../../Services/Token";
+import { setToken } from "./../../services/Token";
 import { Input } from "./../../components/Input";
-import { Button } from "../../components/Button";
-import { Radio } from "../../components/Radio";
+import { Button } from "./../../components/Button";
+import { Radio } from "./../../components/Radio";
 import { Link , useNavigate } from "react-router-dom";
 import style from "./register.style.module.css";
-import { createUser } from "../../Services/user.service";
+import { createUser } from "./../../services/user.service";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
 
 

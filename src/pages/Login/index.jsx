@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "./../../components/Input";
 import { Button } from "../../components/Button";
-import { postAuth } from "../../Services/auth.service";
+import { postAuth } from "../../services/auth.service";
 import style from "./login.style.module.css";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
 
@@ -37,8 +37,8 @@ export function Login() {
           <img src={burguerQueen} className={style.imgTittle}/>
         </div>      
         <form className={style.form}>
-          <Input onInput={handleOnInputEmail} placeholder="EMAIL" />
-          <Input onInput={handleOnInputPassword} placeholder="SENHA" type="password" />
+          <Input onInput={handleOnInputEmail} placeholder="E-mail" />
+          <Input onInput={handleOnInputPassword} placeholder="Senha" type="password" />
           <Button onClick={handleOnClickLogin}>ENTRAR</Button>
           <Link to="/register" className={style.hiperlink}>
             É novo por aqui?
