@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { setToken } from "./../../services/Token";
 import { Input } from "./../../components/Input";
 import { Button } from "./../../components/Button";
-import { Radio } from "./../../components/Radio";
+import { Select } from "./../../components/Select";
 import { Link , useNavigate } from "react-router-dom";
 import style from "./register.style.module.css";
 import { createUser } from "./../../services/user.service";
@@ -12,6 +12,27 @@ import burguerQueen from "./../../assets/images/burguerQueen.png";
 
 
 export function Register() {
+
+  const opcoesSelect = [
+    {
+      value: "setor",
+      text: "Setor",
+      selected: true,
+      disabled: true
+    },
+    {
+      value: "cozinha",
+      text: "Cozinha",
+      selected: false,
+      disabled: false
+    },
+    {
+      value: "salao",
+      text: "Salão",
+      selected: false,
+      disabled: false
+    }
+  ];
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -42,7 +63,7 @@ export function Register() {
   }
   
   return (
-    <>      
+    <>
       <main className={style.containerRegister}>
         <div className={style.containerImg}>
           <img src={burguerQueen} className={style.imgTittle}/>
@@ -51,10 +72,7 @@ export function Register() {
           <Input placeholder="Nome completo" onInput={(e) => setName(e.target.value)}/>
           <Input placeholder="Email" onInput={(e) => setEmail(e.target.value)}/>
           <Input placeholder="Senha" type="password" onInput={(e) => setPassword(e.target.value)}/>
-          <Radio value="kitchen" name="role" id="kitchen" className={style.radioInput} onInput={(e) => setRole(e.target.value)}/>
-            <span className="span">COZINHA</span>
-          <Radio value="hall" name="role" id="hall" className={style.radioInput} onInput={(e) => setRole(e.target.value)}/>
-            <span className="span">SALÃO</span>
+          <Select options={opcoesSelect} value="kitchen" name="role" id="kitchen" className={style.radioInput} onInput={(e) => setRole(e.target.value)}/>
           <Button onClick={handleSubmit}>CRIAR CONTA</Button>
           <Link to="/" className={style.hiperlink}>
           Já tenho cadastro
