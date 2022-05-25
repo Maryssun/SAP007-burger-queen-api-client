@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "./../../components/Input";
 import { Button } from "../../components/Button";
-import { postAuth } from "../../services/auth.service";
+import { postAuth } from "./../../services/auth.service";
 import style from "./login.style.module.css";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
 
