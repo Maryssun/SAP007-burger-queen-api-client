@@ -1,3 +1,4 @@
+import { Error } from "./../Error";
 import style from "./input.style.module.css";
 
 export function Input(props) {
@@ -11,7 +12,7 @@ export function Input(props) {
         onInput={props.onInput}
         required={props.required}
       />
-      {props.error && <div className={style.error}>{props.msgError}</div>}
+      {props.error && <Error message={props.msgError} />}
     </>
   );
 }

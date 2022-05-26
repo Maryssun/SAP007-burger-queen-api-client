@@ -7,6 +7,7 @@ import { Form } from "../../components/Form";
 import { postAuth } from "../../services/auth.service";
 import style from "./login.style.module.css";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
+import { Error } from "../../components/Error";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ export function Login() {
 
   const [password, setPassword] = useState("");
   const [passwordErro, setPasswordErro] = useState(false);
+
+  const [erroAuth, setErroAuth] = useState(false);
   
   function handleOnClickLogin() {
     if(!email) {
@@ -27,7 +30,13 @@ export function Login() {
     if(email && password) {
       postAuth(email, password)
         .then((response) => {
-          console.log(response);
+          if(response.code === 200) {
+            localStorage.setItem("token", response.token);
+          }
+
+          if(response.code === 400) {
+            setErroAuth(true);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -52,6 +61,7 @@ export function Login() {
           <img src={burguerQueen} className={style.imgTittle} alt="titulo burger queen" />
         </div>
         <Form className={style.form}>
+          {erroAuth && <Error>E-mail ou senha inválidos</Error>}
           <Input onInput={handleOnInputEmail} placeholder="E-mail" error={emailErro} msgError={"Insira um e-mail válido"} required />
           <InputPassword onInput={handleOnInputPassword} placeholder="Senha" error={passwordErro} msgError={"Insira a senha"} required />
           <Button onClick={handleOnClickLogin} type="submit">ENTRAR</Button>
