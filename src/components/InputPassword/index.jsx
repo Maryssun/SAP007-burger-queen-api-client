@@ -11,10 +11,10 @@ export const InputPassword = (props) => {
 
   return (
     <span className={style.container}>
-      <Input {...props} type={eyeOpen ? "text" : "password"} />
       <span onClick={handleClickEye} className={style.spanEye}>
         {eyeOpen ? <i class="bi bi-eye-fill"></i> : <i class="bi bi-eye-slash-fill"></i>}
       </span>
+      <Input {...props} type={eyeOpen ? "text" : "password"} />
     </span>
   );
 };
