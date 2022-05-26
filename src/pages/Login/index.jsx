@@ -30,7 +30,7 @@ export function Login() {
     if(email && password) {
       postAuth(email, password)
         .then((response) => {
-          if(response.code === 200) {
+          if(response.token) {
             localStorage.setItem("token", response.token);
           }
 
