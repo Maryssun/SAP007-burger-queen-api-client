@@ -8,3 +8,10 @@
   padding: 16px;
   font-size: 1.1em;
 }
+
+.error {
+  display: inline-block;
+  font-size: 0.9em;
+  color: red;
+  font-weight: bold;
+}
