@@ -1,17 +1,20 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "./../../components/Input";
 import { InputPassword } from "./../../components/InputPassword";
 import { Button } from "../../components/Button";
 import { Form } from "../../components/Form";
-import { Select } from "../../components/Select";
-import { postAuth } from "../../services/auth.service";
 import { Error } from "../../components/Error";
+import { Select } from "../../components/Select";
+import { createUser } from "../../services/user.service";
+import { setToken } from "../../services/auth.service";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
 import style from "./register.style.module.css";
-import { createUser } from "../../services/user.service";
 
 export function Register() {
+
+  const navigate = useNavigate();
+
   const [nome, setNome] = useState("");
   const [nomeErro, setNomeErro] = useState(false);
 
@@ -66,7 +69,8 @@ export function Register() {
     if(nome && email && password && role) {
       createUser(nome, email, password, role) 
       .then((response) => {
-        console.log(response);
+        setToken(response.token);
+        navigate("../" + response.role);
       })
       .catch((error) => {
         console.log(error);
