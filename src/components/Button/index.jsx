@@ -5,9 +5,10 @@ export function Button(props) {
     <>
       <button
         className={style.button}
-        id={props.id} type={props.type}
+        id={props.id} 
+        type={props.type || "button"}
         onClick={props.onClick}>  
-        {props.children}      
+        {props.children}
       </button>
     </>
   );
