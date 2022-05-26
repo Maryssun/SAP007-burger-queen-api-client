@@ -1,4 +1,4 @@
-import style from "./select.style.module.css";
+// import style from "./select.style.module.css";
 
 export function Select(props) {
 
