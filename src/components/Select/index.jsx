@@ -1,4 +1,4 @@
-// import style from "./select.style.module.css";
+import style from "./select.style.module.css";
 
 export function Select(props) {
 
@@ -6,10 +6,10 @@ export function Select(props) {
 
   return (
     <>
-      <select name="cars" id="cars">
+      <select name={props.name} className={style.select} onChange={props.onChange}>
         {
           options.map((item, index) => {
-            return <option value={item.value} selected={item.selected} disabled={item.disabled}>{item.text}</option>
+            return <option ket={index} value={item.value} selected={item.selected} disabled={item.disabled}>{item.text}</option>
           })
         }
       </select>

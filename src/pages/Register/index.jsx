@@ -1,18 +1,29 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
-import { setToken } from "./../../services/Token";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Input } from "./../../components/Input";
-import { Button } from "./../../components/Button";
-import { Select } from "./../../components/Select";
-import { Link , useNavigate } from "react-router-dom";
-import style from "./register.style.module.css";
-import { createUser } from "./../../services/user.service";
+import { InputPassword } from "./../../components/InputPassword";
+import { Button } from "../../components/Button";
+import { Form } from "../../components/Form";
+import { Select } from "../../components/Select";
+import { postAuth } from "../../services/auth.service";
+import { Error } from "../../components/Error";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
-
-
+import style from "./register.style.module.css";
+import { createUser } from "../../services/user.service";
 
 export function Register() {
+  const [nome, setNome] = useState("");
+  const [nomeErro, setNomeErro] = useState(false);
 
+  const [email, setEmail] = useState("");
+  const [emailErro, setEmailErro] = useState(false);
+
+  const [password, setPassword] = useState("");
+  const [passwordErro, setPasswordErro] = useState(false);
+  
+  const [role, setRole] = useState('');
+  const [roleErro, setRoleErro] = useState(false);
+  
   const opcoesSelect = [
     {
       value: "setor",
@@ -21,63 +32,86 @@ export function Register() {
       disabled: true
     },
     {
-      value: "cozinha",
+      value: "kitchen",
       text: "Cozinha",
       selected: false,
       disabled: false
     },
     {
-      value: "salao",
+      value: "hall",
       text: "Salão",
       selected: false,
       disabled: false
     }
   ];
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState(''); 
-  const [role, setRole] = useState('');
-  const navigate = useNavigate('');
-  
-  function handleSubmit(e) {
-    e.preventDefault();
-    createUser(name, email, password, role)
-      .then((response)=>{
-        console.log(response)
-        console.log(name)
-        console.log(email)
-        console.log(password)
-        console.log(role)
-        if (response.status === 200){
-          return response.json();
-        }
+
+  function handleOnClickRegister() {
+    if(!nome) {
+      setNomeErro(true);
+    }
+
+    if(!email) {
+      setEmailErro(true);
+    }
+
+    if(!password) {
+      setPasswordErro(true);
+    }
+    
+    if(!role) {
+      setRoleErro(true);
+    }
+
+    if(nome && email && password && role) {
+      createUser(nome, email, password, role) 
+      .then((response) => {
+        console.log(response);
       })
-      .then((data )=>{  
-        setToken(data.token, data.role);
-        navigate(data.role === "role"? "/hall" : "/kitchen"); 
-      })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
       });
+    }
+
   }
   
+  function handleOnInputNome(event) {
+    setNome(event.target.value);
+    setNomeErro(false);
+  } 
+
+  function handleOnInputEmail(event) {
+    setEmail(event.target.value);
+    setEmailErro(false);
+  }
+
+  function handleOnInputPassword(event) {
+    setPassword(event.target.value);
+    setPasswordErro(false);
+  }
+
+  function handleOnChangeRole(event) {
+    setRole(event.target.value);
+    setRoleErro(false);
+  }
+
   return (
     <>
-      <main className={style.containerRegister}>
+      <main className={style.containerLogin}>
         <div className={style.containerImg}>
-          <img src={burguerQueen} className={style.imgTittle}/>
-        </div> 
-        <form className={style.form} onSubmit={createUser}>
-          <Input placeholder="Nome completo" onInput={(e) => setName(e.target.value)}/>
-          <Input placeholder="Email" onInput={(e) => setEmail(e.target.value)}/>
-          <Input placeholder="Senha" type="password" onInput={(e) => setPassword(e.target.value)}/>
-          <Select options={opcoesSelect} value="kitchen" name="role" id="kitchen" className={style.radioInput} onInput={(e) => setRole(e.target.value)}/>
-          <Button onClick={handleSubmit}>CRIAR CONTA</Button>
+          <img src={burguerQueen} className={style.imgTittle} alt="titulo burger queen" />
+        </div>
+        <Form className={style.form}>
+          <Input onInput={handleOnInputNome} placeholder="Nome completo" error={nomeErro} msgError={"Insira um nome"}  />
+          <Input onInput={handleOnInputEmail} placeholder="E-mail" error={emailErro} msgError={"Insira um e-mail válido"}  />
+          <InputPassword onInput={handleOnInputPassword} placeholder="Senha" error={passwordErro} msgError={"Insira a senha"}  />
+          <Select options={opcoesSelect} onChange={handleOnChangeRole} name="role" id="kitchen" className={style.radioInput} />
+          {roleErro && <Error>Selecione um setor</Error>}
+          <Button onClick={handleOnClickRegister} type="submit">CADASTRAR</Button>
           <Link to="/" className={style.hiperlink}>
-          Já tenho cadastro
+            Já possui cadastro? Clique aqui para entrar!
           </Link>
-        </form>
+        </Form>
       </main>
     </>
   );

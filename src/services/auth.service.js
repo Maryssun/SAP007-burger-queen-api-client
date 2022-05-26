@@ -16,3 +16,7 @@ export async function postAuth(email, password) {
     const req = await fetch(`${appSettings.api.urlBase}/auth`, options);
     return req.json();
 }
+
+export const setToken = ((token) => localStorage.setItem("token", token));
+
+export const getToken = (() => localStorage.setItem("token"));

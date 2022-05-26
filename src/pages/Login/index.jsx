@@ -4,10 +4,10 @@ import { Input } from "./../../components/Input";
 import { InputPassword } from "./../../components/InputPassword";
 import { Button } from "../../components/Button";
 import { Form } from "../../components/Form";
-import { postAuth } from "../../services/auth.service";
+import { Error } from "../../components/Error";
+import { postAuth, setToken } from "../../services/auth.service";
 import style from "./login.style.module.css";
 import burguerQueen from "./../../assets/images/burguerQueen.png";
-import { Error } from "../../components/Error";
 
 export function Login() {
   const [email, setEmail] = useState("");
@@ -31,7 +31,7 @@ export function Login() {
       postAuth(email, password)
         .then((response) => {
           if(response.token) {
-            localStorage.setItem("token", response.token);
+            setToken(response.token);
           }
 
           if(response.code === 400) {

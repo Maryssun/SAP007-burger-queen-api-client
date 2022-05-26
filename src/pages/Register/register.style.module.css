@@ -2,34 +2,31 @@ body {
   background-color: #1a3042;
 }
 
-.containerRegister {
+.containerLogin {
   background-image: url("./../../assets/images/LogoQueen30.png");
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  max-width: 480px;
   height: 100vh;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
 }
 
+.form{
+  text-align: center;
+}
+
 .containerImg{
-  height: 50vh;
-  width: 80%;
   display: flex;
   justify-content: center;
 }
 
 .imgTittle{
-  height: 50vh;
-  width: auto;
-}
-
-.form{
-  width: 80%;
-  text-align: center;
+  max-height: 160px;
 }
 
 .hiperlink{
