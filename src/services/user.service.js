@@ -12,7 +12,7 @@ export async function createUser (name, email, password, role) {
         email: email,
         password: password, 
         role: role,
-        restaurant: 'Burguer Queen'
+        restaurant: 'Burger Queen'
       })
   });
   return req.json();
