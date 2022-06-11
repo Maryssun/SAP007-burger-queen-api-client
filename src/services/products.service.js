@@ -1,5 +1,4 @@
 import appSettings from "../appSettings";
-import { getToken } from "./auth.service";
 
 export async function getProducts() {
   const token =  localStorage.getItem("token");
