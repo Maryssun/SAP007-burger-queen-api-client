@@ -1,0 +1,77 @@
+import { useEffect, useState } from "react";
+import style from "./product.style.module.css";
+
+export function Product(props) {
+  const produto = props.produto;
+  const preco = String(produto.price.toFixed(2)).replace(".", ",");
+
+  const [qtd, setQtd] = useState(0);
+  
+  useEffect(() => {
+    if(props.onInput) {
+      props.onInput(qtd);
+    }
+  }, [qtd, props]);
+
+  function handleClickAdicionar() {
+    setQtd((qtd) => {
+      if (qtd >= 0) {
+        return ++qtd;
+      }
+      else if (qtd < 0) {
+        return 0;
+      }
+      return qtd;
+    });
+  }
+
+  function handleClickSubtrair() {
+    setQtd((qtd) => {
+      if (qtd > 0) {
+        return --qtd;
+      }
+      else if (qtd < 0) {
+        return 0;
+      }
+      return qtd;
+    });
+  }
+
+  function handleChangeQtd(event) {
+    const value = event.target.value;
+
+    if(!Number(value) < 0 || value === "") {
+      setQtd(1);
+    }
+    else {
+      setQtd(value)
+    }
+  }
+
+  return (
+    <>
+      <div className={style.product}>
+        <div className={style.contentImgProduto}>
+          <img className={style.imgProduto} src={produto.image} alt={produto.nome} />
+        </div>
+
+        <div className={style.contentInformacoes}>
+          
+          <div className={style.contentTitulo}>
+            <p className={style.nome}>{produto.name}</p>
+            <p className={style.preco}><span className={style.cifra}>R$</span>{preco}</p>
+          </div>
+
+          <p>{produto.flavor?.toLowerCase() || "simples"}</p>
+          
+          <div className={style.contadorItens}>
+            <button onClick={handleClickSubtrair}>-</button>
+            <input value={qtd} onInput={handleChangeQtd} type="number" min={0} step={1} />
+            <button onClick={handleClickAdicionar}>+</button>
+          </div>
+
+        </div>
+      </div>
+    </>
+  );
+}

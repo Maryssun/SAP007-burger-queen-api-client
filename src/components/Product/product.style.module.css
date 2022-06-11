@@ -1,0 +1,81 @@
+.product {
+    display: flex;
+    box-shadow: 0px 0px 4px 0px var(--navy);
+    min-height: 20px;
+    max-width: 450px;
+    border-radius: 4px;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: var(--off-white);
+}
+
+.contentInformacoes {
+    flex: 1;
+    margin: 5px;
+    margin-left: 8px;
+}
+
+.contentTitulo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.contentImgProduto {
+    min-width: 100px;
+}
+
+.imgProduto {
+    border-radius: 4px;
+    border: 1px solid var(--gray);
+    box-shadow: 0px 0px 4px 0px var(--gray);
+    width: 150px;
+    max-height: 100%;
+    height: 150px;
+    max-width: 100%;
+}
+
+.nome {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.preco {
+    display: flex;
+    align-items: baseline;
+    font-size: 1em;
+    font-weight: 600;
+    background-color: var(--navy);
+    padding: 5px;
+    border-radius: 4px;
+    color: var(--gold);
+    max-height: 26px;
+}
+
+.cifra {
+    font-size: 0.6em;
+    margin-right: 3px;
+}
+
+.contadorItens {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: -55px;
+}
+
+.contadorItens input, .contadorItens button {
+    width: 50px;
+    height: 30px;
+    font-size: 1.2em;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid var(--gray);
+    box-shadow: 0px 0px 4px 0px var(--gray);
+}
+
+.contadorItens input {
+    text-align: center;
+    width: 100%;
+    margin: 0 6px;
+}
