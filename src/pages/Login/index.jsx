@@ -7,7 +7,7 @@ import { Form } from "../../components/Form";
 import { Error } from "../../components/Error";
 import { postAuth, setToken } from "../../services/auth.service";
 import style from "./login.style.module.css";
-import burguerQueen from "./../../assets/images/burguerQueen.png";
+import burgerQueen from "./../../assets/images/burguerQueen.png";
 
 export function Login() {
   const navigate = useNavigate();
@@ -18,6 +18,7 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [passwordErro, setPasswordErro] = useState(false);
 
+  const [erroRestaurant, setErroRestaurant] = useState(false);
   const [erroAuth, setErroAuth] = useState(false);
 
   function handleOnClickLogin() {
@@ -32,13 +33,17 @@ export function Login() {
     if (email && password) {
       postAuth(email, password)
         .then((response) => {
-          if (response.token) {
-            setToken(response.token);
-            navigate(response.role);
-          }
-
           if (response.code === 400) {
             setErroAuth(true);
+            setErroRestaurant(false);
+          }
+          else if (response?.restaurant?.toUpperCase() !== "BURGER QUEEN") {
+            setErroRestaurant(true);
+            setErroAuth(false);
+          }          
+          else if (response.token) {
+            setToken(response.token);
+            navigate(response.role);
           }
         })
         .catch((err) => {
@@ -62,13 +67,14 @@ export function Login() {
       <main className={style.containerLogin}>
         <div className={style.containerImg}>
           <img
-            src={burguerQueen}
+            src={burgerQueen}
             className={style.imgTittle}
             alt="titulo burger queen"
           />
         </div>
         <Form className={style.form}>
-          {erroAuth && <Error>E-mail ou senha inválidos</Error>}
+          {erroAuth && !erroRestaurant && <Error>E-mail ou senha inválidos</Error>}
+          {erroRestaurant && !erroAuth && <Error>Essa conta não foi criada neste site!</Error>}
           <Input
             onInput={handleOnInputEmail}
             placeholder="E-mail"
