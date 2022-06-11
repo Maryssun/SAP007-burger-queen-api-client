@@ -1,5 +1,5 @@
 body {
-  background-color: #1a3042;
+  background-color: var(--navy);
 }
 
 .containerLogin {

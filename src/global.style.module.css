@@ -73,9 +73,10 @@ border-spacing: 0;
 :root {
 
   --light-yellow: #EEECA8;
-  --nude: #D9A066;
-  --rose: #EE836F;
+  --gold: #ffd700;
   --navy: #1A3042;
   --off-white: #F7F8FC;
   --black: #000000;
+  --gray: #d3d3d3;
+  --error: #ff4848;
 }

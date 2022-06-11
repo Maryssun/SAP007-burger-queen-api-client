@@ -1,7 +1,7 @@
 .error {
     display: inline-block;
     font-size: 0.85em;
-    color: #ff4848;
+    color: var(--error);
     font-weight: 600;
     position: relative;
     top: -16px;
