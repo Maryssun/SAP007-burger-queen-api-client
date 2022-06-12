@@ -72,7 +72,8 @@ export function Product(props) {
             </p>
           </div>
 
-          <p>{produto.flavor?.toLowerCase() || "simples"}</p>
+          <p>Sabor: {produto.flavor?.toLowerCase() || "não aplicável"}</p>
+          <p>{produto.complement && `Complemento: ${produto.complement?.toLowerCase()}`}</p>
 
           <div className={style.contadorItens}>
             <button onClick={handleClickSubtrair}>-</button>
