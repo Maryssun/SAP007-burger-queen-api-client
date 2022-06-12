@@ -4,7 +4,7 @@ export function Button(props) {
   return (
     <>
       <button
-        className={style.button}
+        className={props.gold ? style.buttonGold : style.button}
         id={props.id} 
         type={props.type || "button"}
         onClick={props.onClick}>  
