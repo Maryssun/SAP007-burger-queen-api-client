@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import style from "./product.style.module.css";
 
 export function Product(props) {
@@ -6,10 +6,14 @@ export function Product(props) {
   const preco = String(produto.price.toFixed(2)).replace(".", ",");
 
   const [qtd, setQtd] = useState(0);
-  
+  const firstRender = useRef(true);
+
   useEffect(() => {
-    if(props.onInput) {
-      props.onInput(qtd);
+    if (firstRender.current) {
+      firstRender.current = false;
+    } 
+    else if (props.onInput) {
+        props.onInput(qtd);
     }
   }, [qtd, props]);
 
@@ -44,7 +48,7 @@ export function Product(props) {
       setQtd(1);
     }
     else {
-      setQtd(value)
+      setQtd(value);
     }
   }
 
@@ -52,24 +56,35 @@ export function Product(props) {
     <>
       <div className={style.product}>
         <div className={style.contentImgProduto}>
-          <img className={style.imgProduto} src={produto.image} alt={produto.nome} />
+          <img
+            className={style.imgProduto}
+            src={produto.image}
+            alt={produto.nome}
+          />
         </div>
 
         <div className={style.contentInformacoes}>
-          
           <div className={style.contentTitulo}>
             <p className={style.nome}>{produto.name}</p>
-            <p className={style.preco}><span className={style.cifra}>R$</span>{preco}</p>
+            <p className={style.preco}>
+              <span className={style.cifra}>R$</span>
+              {preco}
+            </p>
           </div>
 
           <p>{produto.flavor?.toLowerCase() || "simples"}</p>
-          
+
           <div className={style.contadorItens}>
             <button onClick={handleClickSubtrair}>-</button>
-            <input value={qtd} onInput={handleChangeQtd} type="number" min={0} step={1} />
+            <input
+              value={qtd}
+              onInput={handleChangeQtd}
+              type="number"
+              min={0}
+              step={1}
+            />
             <button onClick={handleClickAdicionar}>+</button>
           </div>
-
         </div>
       </div>
     </>
