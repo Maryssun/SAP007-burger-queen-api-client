@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import style from "./product.style.module.css";
 
 export function Product(props) {
-  const produto = props.produto;
+  const produto = props.product;
   const preco = String(produto.price.toFixed(2)).replace(".", ",");
 
   const [qtd, setQtd] = useState(0);

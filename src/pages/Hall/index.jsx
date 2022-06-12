@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Product } from "../../components/Product";
+import { ProductList } from "../../components/ProductList";
 import { getProducts } from "../../services/products.service";
 import style from "./hall.style.module.css";
 
@@ -17,11 +17,7 @@ export function Hall() {
       <div className={style.hall}>
         <h1>Hall</h1>
 
-        <div className={style.content}>
-          {products?.map((produto) => {
-            return <Product produto={produto} />;
-          })}
-        </div>
+        <ProductList products={products} onInput={console.log} />
       </div>
     </>
   );
