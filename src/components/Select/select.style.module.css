@@ -8,3 +8,7 @@
     padding: 0 10px;
     font-size: 0.9em;
 }
+
+.border {
+    border: solid 1px var(--navy);
+}

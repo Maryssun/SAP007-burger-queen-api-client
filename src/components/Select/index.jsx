@@ -6,10 +6,10 @@ export function Select(props) {
 
   return (
     <>
-      <select name={props.name} className={style.select} onChange={props.onChange}>
+      <select name={props.name} className={style.select} style={props.border && {border: '1px solid #1a304261'}} onChange={props.onChange}>
         {
           options.map((item, index) => {
-            return <option ket={index} value={item.value} selected={item.selected} disabled={item.disabled}>{item.text}</option>
+            return <option key={index} value={item.value} selected={item.selected} disabled={item.disabled}>{item.text}</option>
           })
         }
       </select>
