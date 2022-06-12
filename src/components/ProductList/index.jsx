@@ -1,9 +1,8 @@
 import { Product } from "../Product";
-import "./productList.style.module.css";
+import style from "./productList.style.module.css";
 
 export function ProductList(props) {
-  
-  
+
   function handleInputProduct(id, quantidade) {
     props.products.forEach((p) => {
       if (p.id === id) {
@@ -18,15 +17,17 @@ export function ProductList(props) {
 
   return (
     <>
-      {(props.products || []).map((product, index) => {
-        return (
-          <Product
-            key={index}
-            product={product}
-            onInput={(quantidade) => handleInputProduct(product.id, quantidade)}
-          />
-        );
-      })}
+      <div className={style.productList}>
+        {(props.products || []).map((product, index) => {
+          return (
+            <Product
+              key={index}
+              product={product}
+              onInput={(quantidade) => handleInputProduct(product.id, quantidade)}
+            />
+          );
+        })}
+      </div>
     </>
   );
 }
