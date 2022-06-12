@@ -8,7 +8,7 @@ export function Client(props) {
 
   const opcoesSelect = [
     {
-      value: "mesa",
+      value: 0,
       text: "Mesa",
       selected: true,
       disabled: true,
@@ -19,7 +19,7 @@ export function Client(props) {
 
   for (let index = 1; index < qtdMesas + 1; index++) {
     opcoesSelect.push({
-      value: `Mesa ${index.toString().padStart(2, "00")}`,
+      value: index,
       text: `Mesa ${index.toString().padStart(2, "00")}`,
       selected: false,
       disabled: false,

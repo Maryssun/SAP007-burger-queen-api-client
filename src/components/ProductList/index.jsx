@@ -36,7 +36,7 @@ export function ProductList(props) {
         {(products || []).map((product, index) => {
           return (
             <Product
-              key={index}
+              key={index + props.typeMenu}
               product={product}
               onInput={(quantidade) => handleInputProduct(product.id, quantidade)}
             />
