@@ -13,14 +13,20 @@ export function ProductList(props) {
   }, [props.typeMenu, props.products])
 
   function handleInputProduct(id, quantidade) {
-    products.forEach((p) => {
+    const m = props.products.map((p) => {
       if (p.id === id) {
         p.quantidade = quantidade;
+        return p;
       }
+      else if(p.quantidade > 0) {
+        return p;
+      }
+      return {};
     });
     
     if (props.onInput) {
-      props.onInput(products);
+      const productsFiltered = m.filter(p => Boolean(p?.quantidade) );
+      props.onInput(productsFiltered);
     }
   }
 

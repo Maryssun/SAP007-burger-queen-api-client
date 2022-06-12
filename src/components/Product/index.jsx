@@ -15,7 +15,7 @@ export function Product(props) {
     else if (props.onInput) {
         props.onInput(qtd);
     }
-  }, [qtd, props]);
+  }, [qtd]); // eslint-disable-line
 
   function handleClickAdicionar() {
     setQtd((qtd) => {
