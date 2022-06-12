@@ -1,24 +1,33 @@
+import { useEffect, useState } from "react";
 import { Product } from "../Product";
 import style from "./productList.style.module.css";
 
 export function ProductList(props) {
 
+  const [products, setProducts] = useState(props.products);
+
+  useEffect(() => {
+    setProducts(() => {
+      return props.products.filter(p => p.type === props.typeMenu)
+    });
+  }, [props.typeMenu, props.products])
+
   function handleInputProduct(id, quantidade) {
-    props.products.forEach((p) => {
+    products.forEach((p) => {
       if (p.id === id) {
         p.quantidade = quantidade;
       }
     });
     
     if (props.onInput) {
-      props.onInput(props.products);
+      props.onInput(products);
     }
   }
 
   return (
     <>
       <div className={style.productList}>
-        {(props.products || []).map((product, index) => {
+        {(products || []).map((product, index) => {
           return (
             <Product
               key={index}
