@@ -8,7 +8,7 @@ import { Error } from "../../components/Error";
 import { Select } from "../../components/Select";
 import { createUser } from "../../services/user.service";
 import { setToken } from "../../services/auth.service";
-import burguerQueen from "./../../assets/images/burguerQueen.png";
+import burgerQueen from "./../../assets/images/burguerQueen.png";
 import style from "./register.style.module.css";
 
 export function Register() {
@@ -103,7 +103,7 @@ export function Register() {
     <>
       <main className={style.containerLogin}>
         <div className={style.containerImg}>
-          <img src={burguerQueen} className={style.imgTittle} alt="titulo burger queen" />
+          <img src={burgerQueen} className={style.imgTittle} alt="titulo burger queen" />
         </div>
         <Form className={style.form}>
           <Input onInput={handleOnInputNome} placeholder="Nome completo" error={nomeErro} msgError={"Insira um nome"}  />
