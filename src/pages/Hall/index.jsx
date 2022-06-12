@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AppMenu } from "../../components/AppMenu";
 import { Client } from "../../components/Client";
 import { PrincipalMenu } from "../../components/PrincipalMenu";
@@ -8,6 +9,8 @@ import { getProducts } from "../../services/products.service";
 import style from "./hall.style.module.css";
 
 export function Hall() {
+
+  const { state } = useLocation();
   const [products, setProducts] = useState([]);
   const [productsSelected, setProductsSelected] = useState([]);
   const [typeMenu, setTypeMenu] = useState("all-day");
@@ -61,7 +64,7 @@ export function Hall() {
   return (
     <>
       <div className={style.hall}>
-        <AppMenu />
+        <AppMenu userName={state.name} />
         <Client onClickAddOrder={handleClickAddOrder} onClickShowOrder={handleClickShowOrder} />
         <PrincipalMenu onClick={handleClickPrincipalMenu} menu={typeMenu} />
         <ProductList products={products} typeMenu={typeMenu} onInput={handleOnInputProductsSelected} />

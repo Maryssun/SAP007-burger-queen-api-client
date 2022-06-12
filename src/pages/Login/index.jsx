@@ -43,7 +43,7 @@ export function Login() {
           }          
           else if (response.token) {
             setToken(response.token);
-            navigate(response.role);
+            navigate(response.role, { state: response });
           }
         })
         .catch((err) => {
