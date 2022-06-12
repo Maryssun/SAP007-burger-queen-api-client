@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AppMenu } from "../../components/AppMenu";
 import { Client } from "../../components/Client";
 import { PrincipalMenu } from "../../components/PrincipalMenu";
 import { ProductList } from "../../components/ProductList";
@@ -35,6 +36,7 @@ export function Hall() {
   return (
     <>
       <div className={style.hall}>
+        <AppMenu />
         <Client onClickAddOrder={handleClickAddOrder} onClickShowOrder={handleClickShowOrder} />
         <PrincipalMenu onClick={handleClickPrincipalMenu} menu={typeMenu} />
         <ProductList products={products} typeMenu={typeMenu} onInput={handleOnInputProductsSelected} />
