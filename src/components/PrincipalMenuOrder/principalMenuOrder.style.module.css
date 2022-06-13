@@ -37,7 +37,7 @@ body {
 }
 
 [data-active="pending"]:first-child,
-[data-active="in_prepare"]:nth-child(2),
+[data-active="in_progress"]:nth-child(2),
 [data-active="done"]:last-child {
   border-bottom: 5px solid var(--gold);
 }

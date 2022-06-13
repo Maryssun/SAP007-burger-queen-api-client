@@ -2,9 +2,9 @@ import style from "./principalMenuOrder.style.module.css";
 
 export function PrincipalMenuOrder(props) {
   const menus = [
-    { name: "Em aberto", type: "pending" },
-    { name: "Em preparo", type: "in_prepare" },
-    { name: "Pronto", type: "done" }
+    { name: "Em aberto", status: "pending" },
+    { name: "Em preparo", status: "in_progress" },
+    { name: "Pronto", status: "done" }
   ];
 
   function handleClickMenu(menu) {
