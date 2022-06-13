@@ -13,7 +13,6 @@ export function Kitchen() {
   const [status, setStatus] = useState("pending");
   
   useEffect(() => {
-    setOrders([]);
     getOrders().then((orders) => {
       const ordersFiltered = orders.filter((order) => {
         return order.client_name?.includes("SistemaBurgerQueen_");
@@ -34,7 +33,6 @@ export function Kitchen() {
   }
 
   function handleOnClickOrderList(nextStatus) {
-    console.log(">>>>>>>>", nextStatus);
     setStatus(nextStatus);
   }
 

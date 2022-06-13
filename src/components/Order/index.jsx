@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { putOrders } from "../../services/orders.service";
 import { Button } from "../Button";
 import { ProductOrder } from "../ProductOrder";
@@ -6,8 +5,6 @@ import style from "./order.style.module.css";
 
 export function Order(props) {
   const order = props.order;
-
-  const [status, setStatus] = useState(order.status);
 
   function getStatusName(status) {
     switch (status) {
@@ -35,7 +32,6 @@ export function Order(props) {
 
   function handleClickChangeStatus() {
     const nextStatus = getNextStatus(order.status, true);
-    setStatus(nextStatus);
 
     const params = {
       orderId: order.id,
@@ -66,7 +62,7 @@ export function Order(props) {
             );
           })}
 
-          {status !== "done" && (
+          {order.status !== "done" && (
             <div className={style.btnChangeStatus}>
               <Button blue={true} onClick={handleClickChangeStatus}>
                 {`Mover para ${getNextStatus(order.status)}`}
@@ -76,7 +72,7 @@ export function Order(props) {
             </div>
           )}
 
-          {status === "done" && (
+          {order.status === "done" && (
             <div className={style.btnChangeStatus}>
               <p className={style.done}>{`Finalizado em ${new Date(order.updatedAt).toLocaleString()}`}</p>
             </div>
