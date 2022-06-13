@@ -1,0 +1,41 @@
+.product {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    flex-direction: row;
+    box-shadow: 0px 0px 2px 0px var(--navy);
+    background-color: var(--off-white);
+    width: 100%;
+    border-radius: 4px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1.06em;
+}
+
+.contentTitulo {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.name, .flavor {
+    font-weight: 600;
+    padding: 0 10px;
+}
+
+.flavor {
+    padding: 0;
+    text-transform: capitalize;
+}
+
+.qtd {
+    display: flex;
+    align-items: center;
+    color: var(--gold);
+    background-color: var(--navy);
+    height: 30px;
+    width: 50px;
+    padding: 0 8px;
+    border-radius: 4px;
+    letter-spacing: 1.5px;
+}
