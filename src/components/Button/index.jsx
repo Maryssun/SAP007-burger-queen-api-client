@@ -9,6 +9,9 @@ export function Button(props) {
   else if(props.white) {
     style_ = style.buttonWhite;
   }
+  else if(props.blue) {
+    style_ = style.buttonBlue;
+  }
 
   return (
     <>
