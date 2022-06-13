@@ -26,3 +26,17 @@ export async function getOrders() {
   });
   return req.json();
 };
+
+export async function putOrders(params) {
+  const token =  localStorage.getItem("token");
+
+  const req = await fetch(`${appSettings.api.urlBase}/orders/${params.orderId}`, {
+    method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token
+      },
+      body: JSON.stringify({status: params.status})
+  });
+  return req.json();
+};
