@@ -45,7 +45,11 @@ export function Hall() {
   }
 
   function handleClickShowOrder(client) {
-    console.log(client, typeMenu, productsSelected)
+    let comanda = "";
+    productsSelected.forEach(p => {
+      comanda += `${p.quantidade}x ${p.name} (${p.flavor || "normal"})  \n`
+    });
+    alert(`${client}\n\n ${comanda}`);
   }
 
   function handleOnInputProductsSelected(order) {

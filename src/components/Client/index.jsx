@@ -34,7 +34,7 @@ export function Client(props) {
   
   function handleClickShowOrder() {
     if(props.onClickShowOrder) {
-      props.onClickShowOrder(client);
+      props.onClickShowOrder(`Mesa ${client.toString().padStart(2, "00")}`);
     }
   }
 
@@ -45,7 +45,7 @@ export function Client(props) {
           <Select options={opcoesSelect} border={true} onChange={(e) => setClient(e.target.value)} />
         </div>
         <div className={style.button}>
-          <Button white={true} onClick={handleClickShowOrder}>Ver comanda</Button>
+          <Button white={true} disabled={!client} onClick={handleClickShowOrder}>Ver comanda</Button>
         </div>
         <div className={style.button}>
           <Button gold={true} disabled={!client} onClick={handleClickAddOrder}>Adicionar pedido</Button>
