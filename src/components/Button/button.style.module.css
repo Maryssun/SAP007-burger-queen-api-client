@@ -8,7 +8,7 @@
 }
 
 .button:hover {
-    background-color: var(--light-yellow);
+    background-color: var(--gold);
     cursor: pointer;
 }
 
