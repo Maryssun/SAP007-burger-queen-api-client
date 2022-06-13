@@ -35,7 +35,7 @@ export function Hall() {
 
     if (productsSelected.length > 0) {
       const bodyParams = {
-        client: `Mesa ${client}`,
+        client: `SistemaBurgerQueen_Mesa ${client}`,
         table: parseInt(client),
         products: products,
       };
