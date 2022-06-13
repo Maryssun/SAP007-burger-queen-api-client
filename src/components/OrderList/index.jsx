@@ -7,9 +7,15 @@ export function OrderList(props) {
 
   useEffect(() => {
     setOrders(() => {
-      return props.orders.filter((o) => o.status === props.typeMenu);
+      return props.orders.filter((o) => o.status === props.status);
     });
-  }, [props.typeMenu, props.orders]);
+  }, [props.status, props.orders]);
+
+  function handleOnClickNextStatus(nextStatus) {
+    if(props.onClick) {
+      props.onClick(nextStatus);
+    }
+  }
 
   return (
     <>
@@ -17,7 +23,7 @@ export function OrderList(props) {
         {(orders || []).map((order, index) => {
           return (
             <>
-              <Order key={index + props.typeMenu} order={order} />
+              <Order key={index + props.status} order={order} onClick={handleOnClickNextStatus} />
             </>
           );
         })}

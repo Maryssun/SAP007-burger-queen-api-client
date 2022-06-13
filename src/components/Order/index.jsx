@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { putOrders } from "../../services/orders.service";
 import { Button } from "../Button";
 import { ProductOrder } from "../ProductOrder";
 import style from "./order.style.module.css";
@@ -5,32 +7,46 @@ import style from "./order.style.module.css";
 export function Order(props) {
   const order = props.order;
 
-  function getStatus(status) {
-    switch(status) {
-      case "pending": 
+  const [status, setStatus] = useState(order.status);
+
+  function getStatusName(status) {
+    switch (status) {
+      case "pending":
         return "Em aberto";
-      case "in_progess":
+      case "in_progress":
         return "Em preparo";
       case "done":
         return "Pronto";
       default:
-        return "Status desconhecido";
+        return "pending";
     }
   }
 
-  function getNextStatus(status) {
-    switch(status) {
-      case "pending": 
-      return "Em preparo";
-      case "in_progess":
-        return "Pronto";
+  function getNextStatus(status, fromRequest = false) {
+    switch (status) {
+      case "pending":
+        return fromRequest ? "in_progress" : "Em preparo";
+      case "in_progress":
+        return fromRequest ? "done" : "Pronto";
       default:
-        return "Status desconhecido";
+        return fromRequest ? "pending" : "Em aberto";
     }
   }
 
   function handleClickChangeStatus() {
- 
+    const nextStatus = getNextStatus(order.status, true);
+    setStatus(nextStatus);
+
+    const params = {
+      orderId: order.id,
+      status: nextStatus,
+    };
+
+    putOrders(params).finally(() => {
+      if (props.onClick) {
+        props.onClick(nextStatus);
+      }
+    });
   }
 
   return (
@@ -39,23 +55,32 @@ export function Order(props) {
         <div className={style.contentProducts}>
           <div className={style.contentTitle}>
             <p className={style.name}>{order.client_name}</p>
-            <p className={style.status}>{getStatus(order.status)}</p>
+            <p className={style.status}>{getStatusName(order.status)}</p>
           </div>
 
-          {order.Products.map((o) => {
-              return (
-                <>
-                  <ProductOrder order={o} />
-                </>
-              )
-            })}
-          <div className={style.btnChangeStatus}>
-            <Button blue onClick={handleClickChangeStatus}>
-              {`Mover para ${getNextStatus(order.status)}`}
-              &nbsp;&nbsp;&nbsp;
-              <i class="bi bi-arrow-right-square"></i>
-            </Button>
-          </div> 
+          {order.Products.map((productOrder, index) => {
+            return (
+              <>
+                <ProductOrder key={index} order={productOrder} />
+              </>
+            );
+          })}
+
+          {status !== "done" && (
+            <div className={style.btnChangeStatus}>
+              <Button blue={true} onClick={handleClickChangeStatus}>
+                {`Mover para ${getNextStatus(order.status)}`}
+                &nbsp;&nbsp;&nbsp;
+                <i className="bi bi-arrow-right-square"></i>
+              </Button>
+            </div>
+          )}
+
+          {status === "done" && (
+            <div className={style.btnChangeStatus}>
+              <p className={style.done}>{`Finalizado em ${new Date(order.updatedAt).toLocaleString()}`}</p>
+            </div>
+          )}
         </div>
       </div>
     </>
