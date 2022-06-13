@@ -42,6 +42,10 @@ export function ProductList(props) {
             />
           );
         })}
+
+        {(products || []).length <= 0 && (
+          <p className={style.noOrders}>Não há produtos por aqui!</p>
+        )}
       </div>
     </>
   );
