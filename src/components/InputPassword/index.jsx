@@ -13,7 +13,7 @@ export const InputPassword = (props) => {
   <>
     <Input {...props} type={eyeOpen ? "text" : "password"} />
     <div className={style.eye} onClick={handleClickEye}>
-      {eyeOpen ? <i class="bi bi-eye-fill"></i> : <i class="bi bi-eye-slash-fill"></i>}
+      {eyeOpen ? <i className="bi bi-eye-fill"></i> : <i className="bi bi-eye-slash-fill"></i>}
     </div>
     </>
     );
