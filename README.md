@@ -22,11 +22,10 @@
 O produto possibilita que um funcionário do restaurante faça pedidos e acompanhe o preparo deles ordenadamente atráves de uma interface intuitiva que foi feita pensada na agilidade e na praticidade do usuário. <br>
 O projeto foi proposto pela Laboratoria e teve como algumas premissas ser um SPA (*Single Page App*) responsivo em tablets, ter estrutura definida de pastas e arquivos, manter a interface e o estado sincronizados, além do uso de Javascript e o consumo da [Burger Queen API](https://lab-api-bq.herokuapp.com/api-docs/) e do framework React. <br><br>
 
+<div align='center'>
   
   **Você pode acessar a aplicação utilizando um dos logins de teste abaixo:**
 
-
-<div align='center'>
  
 
  |      |          Salão          |      Cozinha            |
