@@ -96,7 +96,7 @@ Após o desenvolvimento do projeto, foram realizados testes de usabilidade com d
 | `JavaScript` |  Linguagem de programação interpretada estruturada |
 | `Node.js` | Software de execução de códigos JavaScript |
 | `Git e GitHub` | Sistemas de controle de versões distribuídos |
-| `Canva` | Editor gráfico de vetor e prototipagem de projetos |
+| `Canva e Figma` | Editor gráfico de vetor e prototipagem de projetos |
 
 ---
 
